@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,6 +39,16 @@ public class ProductController {
         MappingJacksonValue produitsFiltres = new MappingJacksonValue(produits);
         produitsFiltres.setFilters(listDeNosFiltres);
         return produitsFiltres;
+    }
+
+    @RequestMapping(value = "/AdminProduits", method = RequestMethod.GET)
+    public ArrayList<String> calculerMargeProduit(){
+        Iterable<Product> produits = productDao.findAll();
+        ArrayList<String>  produitsWithMarge = new ArrayList<String>();
+        for(Product p : produits){
+            produitsWithMarge.add(p.toString() + ":" + (p.getPrix() - p.getPrixAchat()));
+        }
+        return produitsWithMarge;
     }
 
     //Récupérer un produit par son Id
