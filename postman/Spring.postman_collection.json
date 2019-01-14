@@ -59,11 +59,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{URL}}:{{PORT}}localhost:9090/Produits/Trier",
+					"raw": "{{URL}}:{{PORT}}/Produits/Trier",
 					"host": [
-						"{{URL}}:{{PORT}}localhost"
+						"{{URL}}"
 					],
-					"port": "9090",
+					"port": "{{PORT}}",
 					"path": [
 						"Produits",
 						"Trier"
