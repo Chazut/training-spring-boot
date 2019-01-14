@@ -62,8 +62,8 @@ public class ProductController {
     @GetMapping(value = "/Produits/{id}")
     public Product afficherUnProduit(@PathVariable int id) throws ProduitGratuitException {
         Product produit = productDao.findById(id);
-        if(produit.getPrix() == 1) throw new ProduitGratuitException();
         if(produit==null) throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est INTROUVABLE. Écran Bleu si je pouvais.");
+        if(produit.getPrix() == 1) throw new ProduitGratuitException();
         return produit;
     }
 
