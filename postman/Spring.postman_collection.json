@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7d99369a-5b74-48d5-a79e-3562117e8a7c",
+		"_postman_id": "54190b80-be18-48f2-a431-0b9e348cea75",
 		"name": "Spring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,11 +15,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:9090/Produits",
+					"raw": "{{URL}}:{{PORT}}/Produits",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "9090",
+					"port": "{{PORT}}",
 					"path": [
 						"Produits"
 					]
@@ -37,11 +37,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:9090/AdminProduits",
+					"raw": "{{URL}}:{{PORT}}/AdminProduits",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "9090",
+					"port": "{{PORT}}",
 					"path": [
 						"AdminProduits"
 					]
@@ -59,37 +59,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:9090/Produits/Trier",
+					"raw": "{{URL}}:{{PORT}}localhost:9090/Produits/Trier",
 					"host": [
-						"localhost"
+						"{{URL}}:{{PORT}}localhost"
 					],
 					"port": "9090",
 					"path": [
 						"Produits",
 						"Trier"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/Produits/{id}",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "localhost:9090/Produits/2",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"Produits",
-						"2"
 					]
 				}
 			},
@@ -112,7 +89,7 @@
 					"formdata": [
 						{
 							"key": "id",
-							"value": "5",
+							"value": "{{ID_POST}}",
 							"type": "text"
 						},
 						{
@@ -133,13 +110,36 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:9090/Produits",
+					"raw": "{{URL}}:{{PORT}}/Produits",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "9090",
+					"port": "{{PORT}}",
 					"path": [
 						"Produits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Produits/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/Produits/{{ID_GET}}",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"Produits",
+						"{{ID_GET}}"
 					]
 				}
 			},
@@ -162,7 +162,7 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "5",
+							"value": "{{ID_UPDATE}}",
 							"type": "text"
 						},
 						{
@@ -183,13 +183,36 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:9090/Produits",
+					"raw": "{{URL}}:{{PORT}}/Produits",
 					"host": [
-						"localhost"
+						"{{URL}}"
 					],
-					"port": "9090",
+					"port": "{{PORT}}",
 					"path": [
 						"Produits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Produits/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/Produits/{{ID_DELETE}}",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"Produits",
+						"{{ID_DELETE}}"
 					]
 				}
 			},
