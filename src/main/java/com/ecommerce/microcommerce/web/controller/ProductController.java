@@ -32,6 +32,7 @@ public class ProductController {
     private ProductDao productDao;
 
     //Récupérer la liste des produits
+    @ApiOperation(value = "Récupérer la liste des produits")
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
     public MappingJacksonValue listeProduits() {
         Iterable<Product> produits = productDao.findAll();
@@ -42,11 +43,13 @@ public class ProductController {
         return produitsFiltres;
     }
 
+    @ApiOperation(value = "Récupérer la liste triée des produits")
     @GetMapping(value = "Produits/Trier")
     public List<Product>  trierProduitsParOrdreAlphabetique() {
         return productDao.trierProduitsParOrdreAlphabetique();
     }
 
+    @ApiOperation(value = "Récuperer la liste des produits avec marge calculées")
     @RequestMapping(value = "/AdminProduits", method = RequestMethod.GET)
     public ArrayList<String> calculerMargeProduit(){
         Iterable<Product> produits = productDao.findAll();
@@ -68,6 +71,7 @@ public class ProductController {
     }
 
     //ajouter un produit
+    @ApiOperation(value = "Ajouter un produit")
     @PostMapping(value = "/Produits")
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestParam Map<String, String> product) {
         Product productAdded =  productDao.save(new Product(Integer.parseInt(product.get("id")), product.get("nom"), Integer.parseInt(product.get("prix")), Integer.parseInt(product.get("prixAchat"))));
@@ -81,17 +85,20 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }
 
+    @ApiOperation(value = "Supprimer un produit")
     @DeleteMapping (value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
         productDao.delete(id);
     }
 
+    @ApiOperation(value = "Modifier un produit")
     @PutMapping (value = "/Produits", produces = {"application/json", "application/xml"}, consumes = {"application/x-www-form-urlencoded"})
     public void updateProduit(@RequestParam Map<String, String> product) {
         productDao.save(new Product(Integer.parseInt(product.get("id")), product.get("nom"), Integer.parseInt(product.get("prix")), Integer.parseInt(product.get("prixAchat"))));
     }
 
     //Pour les tests
+    @ApiOperation(value = "Pour les tests")
     @GetMapping(value = "test/produits/{prix}")
     public List<Product>  testeDeRequetes(@PathVariable int prix) {
         return productDao.chercherUnProduitCher(prix);
