@@ -59,13 +59,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:9090/Produits",
+					"raw": "localhost:9090/Produits/Trier",
 					"host": [
 						"localhost"
 					],
 					"port": "9090",
 					"path": [
-						"Produits"
+						"Produits",
+						"Trier"
 					]
 				}
 			},
@@ -81,19 +82,19 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:9090/Produits/{id}?id",
+					"raw": "localhost:9090/Produits/?id",
 					"host": [
 						"localhost"
 					],
 					"port": "9090",
 					"path": [
 						"Produits",
-						"{id}"
+						""
 					],
 					"query": [
 						{
 							"key": "id",
-							"value": ""
+							"value": null
 						}
 					]
 				}
@@ -108,6 +109,11 @@
 				"body": {
 					"mode": "formdata",
 					"formdata": [
+						{
+							"key": "id",
+							"value": "",
+							"type": "text"
+						},
 						{
 							"key": "nom",
 							"value": "",
@@ -144,31 +150,38 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "nom",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "prix",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "prixAchat",
+							"value": "",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
-					"raw": "localhost:9090/Produits?nom&prix&prixAchat",
+					"raw": "localhost:9090/Produits",
 					"host": [
 						"localhost"
 					],
 					"port": "9090",
 					"path": [
 						"Produits"
-					],
-					"query": [
-						{
-							"key": "nom",
-							"value": ""
-						},
-						{
-							"key": "prix",
-							"value": ""
-						},
-						{
-							"key": "prixAchat",
-							"value": ""
-						}
 					]
 				}
 			},
