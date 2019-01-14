@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "32549c0f-1dec-4369-8838-e5522843a87d",
+		"_postman_id": "7d99369a-5b74-48d5-a79e-3562117e8a7c",
 		"name": "Spring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -74,28 +74,22 @@
 		},
 		{
 			"name": "/Produits/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
-					"raw": "localhost:9090/Produits/?id",
+					"raw": "localhost:9090/Produits/2",
 					"host": [
 						"localhost"
 					],
 					"port": "9090",
 					"path": [
 						"Produits",
-						""
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": null
-						}
+						"2"
 					]
 				}
 			},
@@ -105,28 +99,35 @@
 			"name": "/Produits",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "formdata",
 					"formdata": [
 						{
 							"key": "id",
-							"value": "",
+							"value": "5",
 							"type": "text"
 						},
 						{
 							"key": "nom",
-							"value": "",
+							"value": "test",
 							"type": "text"
 						},
 						{
 							"key": "prix",
-							"value": "",
+							"value": "100",
 							"type": "text"
 						},
 						{
 							"key": "prixAchat",
-							"value": "",
+							"value": "34",
 							"type": "text"
 						}
 					]
@@ -148,28 +149,35 @@
 			"name": "/Produits",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"mode": "urlencoded",
+					"urlencoded": [
 						{
 							"key": "id",
-							"value": "",
+							"value": "5",
 							"type": "text"
 						},
 						{
 							"key": "nom",
-							"value": "",
+							"value": "renamed",
 							"type": "text"
 						},
 						{
 							"key": "prix",
-							"value": "",
+							"value": "600",
 							"type": "text"
 						},
 						{
 							"key": "prixAchat",
-							"value": "",
+							"value": "9",
 							"type": "text"
 						}
 					]

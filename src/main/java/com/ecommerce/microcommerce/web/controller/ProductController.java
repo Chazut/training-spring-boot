@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Api( description="API pour es opérations CRUD sur les produits.")
@@ -67,8 +69,8 @@ public class ProductController {
 
     //ajouter un produit
     @PostMapping(value = "/Produits")
-    public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
-        Product productAdded =  productDao.save(product);
+    public ResponseEntity<Void> ajouterProduit(@Valid @RequestParam Map<String, String> product) {
+        Product productAdded =  productDao.save(new Product(Integer.parseInt(product.get("id")), product.get("nom"), Integer.parseInt(product.get("prix")), Integer.parseInt(product.get("prixAchat"))));
         if (productAdded == null)
             return ResponseEntity.noContent().build();
         URI location = ServletUriComponentsBuilder
@@ -84,9 +86,9 @@ public class ProductController {
         productDao.delete(id);
     }
 
-    @PutMapping (value = "/Produits")
-    public void updateProduit(@RequestBody Product product) {
-        productDao.save(product);
+    @PutMapping (value = "/Produits", produces = {"application/json", "application/xml"}, consumes = {"application/x-www-form-urlencoded"})
+    public void updateProduit(@RequestParam Map<String, String> product) {
+        productDao.save(new Product(Integer.parseInt(product.get("id")), product.get("nom"), Integer.parseInt(product.get("prix")), Integer.parseInt(product.get("prixAchat"))));
     }
 
     //Pour les tests
